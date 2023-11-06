@@ -473,3 +473,32 @@ nav.close ~ .dashboard .top{
     }
 }
 
+/* Add some basic styles to the button */
+.unicons-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style the Unicons icon inside the button */
+.unicons-button i {
+    /* font-size: 24px; */
+    margin-right: 5px; /* Add some spacing between the icon and text */
+}
+
+.scrollable-table {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}

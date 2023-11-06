@@ -41,3 +41,51 @@ $(document).ready(function() {
         }, 800);
     });
 });
+
+
+function predictFunction(button) {
+    var row = button.closest('tr');
+    var cells = row.querySelectorAll('td');
+    var rowData = [];
+    for (var i = 0; i < cells.length; i++) {
+        rowData.push(cells[i].textContent.trim());
+    }
+
+    // Set the input_data field value
+    document.querySelector('input[name="input_data"]').value = JSON.stringify(rowData);
+
+    // Send an AJAX request to the server
+    $.ajax({
+        type: 'POST',
+        url: '/submit',
+        data: $('form').serialize(),
+        success: function(response) {
+            // Handle the response from the server (e.g., update the table with prediction results)
+            $('.result').html("Prediction Result: " + response);
+        },
+        error: function(error) {
+            // Handle errors, if any
+            $('.result').html("Error: " + error);
+        }
+    });
+}
+// Include jQuery library for AJAX
+
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+        
+radioButtons.forEach(radioButton => {
+    radioButton.addEventListener('change', function() {
+        const selectedOption = this.value;
+        fetch('/update_option', {
+            method: 'POST',
+            body: JSON.stringify({ selectedOption }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    });
+})
+
+
+
+

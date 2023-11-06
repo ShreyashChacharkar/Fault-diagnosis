@@ -36,7 +36,7 @@
                     <i class="uil uil-chart"></i>
                     <span class="link-name">Faliure Prediction</span>
                 </a></li>
-                <li><a href="#notification">
+                <li><a href="notification">
                     <i class="uil uil-bell"></i>
                     <span class="link-name">Notification</span>
                 </a></li>
@@ -93,87 +93,103 @@
                     <i class="uil uil-tachometer-fast-alt"></i>
                     <span class="text">Dashboard</span>
                 </div>
-                {% if result %}
-                    {{result|safe}}
+                {% if data %}
+                    <form action="/predict" method="post">
+                    <label for="model">Select a  model:</label>
+                    <select id="model" name="model">
+                        <option value="None">None</option>
+                        <option value="XGBoost">XGBoost</option>
+                        <option value="Logistic Regression">Logistic Regression</option>
+                        <option value="Decision Tree">Decision Tree</option>
+                        <option value="Random Forest">Random Forest</option>
+                        <option value="Naive Bayes">Naive Bayes</option>
+                        <option value="K-Nearest Neighbors">K-Nearest Neighbors</option>
+                    </select><br><br>
+                    <input type="hidden" name="input_data" value="{{value}}">
+                    <div class="scrollable-table">
+                        <table border="1">
+                            <thead>
+                                <tr>
+                                    {% for col in dataframe.columns %}
+                                        <th>{{ col }}</th>
+                                    {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for row in dataframe.itertuples() %}
+                                    <tr>
+                                        {% for value in row[1:] %}       
+                                            <td>
+                                                {% if value == 'predict' %}
+                                                <button class="predict-button" type="button" onclick="predictFunction(this)">Predict</button>
+                                                {% else %}
+                                                    {{ value }}
+                                                {% endif %}
+                                            </td>
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <input type="submit" value="Predict">
+                </form>
                 {% else %}
-                <div class="boxes">
-                    <div class="box box1">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="text">Total Likes</span>
-                        <span class="number">50,120</span>
-                    </div>
-                    <div class="box box2">
-                        <i class="uil uil-comments"></i>
-                        <span class="text">Comments</span>
-                        <span class="number">20,120</span>
-                    </div>
-                    <div class="box box3">
-                        <i class="uil uil-share"></i>
-                        <span class="text">Total Share</span>
-                        <span class="number">10,120</span>
-                    </div>
-                </div>
+                        <div class="boxes">
+                            <div class="box box1">
+                                <i class="uil uil-thumbs-up"></i>
+                                <span class="text">Total Likes</span>
+                                <span class="number">50,120</span>
+                            </div>
+                            <div class="box box2">
+                                <i class="uil uil-comments"></i>
+                                <span class="text">Comments</span>
+                                <span class="number">20,120</span>
+                            </div>
+                            <div class="box box3">
+                                <i class="uil uil-share"></i>
+                                <span class="text">Total Share</span>
+                                <span class="number">10,120</span>
+                            </div>
+                        </div>
                 {% endif %}
             </div>
-            
-            <div class="activity">
-                <div class="title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="text">Recent Activity</span>
-                </div>
-            
-                <div class="activity-data">
-                    <div class="data names">
-                        <span class="data-title">Name</span>
-                        <span class="data-list">Prem Shahi</span>
-                        <span class="data-list">Deepa Chand</span>
-                        <span class="data-list">Manisha Chand</span>
-                        <span class="data-list">Pratima Shahi</span>
-                        <span class="data-list">Man Shahi</span>
-                        <span class="data-list">Ganesh Chand</span>
-                        <span class="data-list">Bikash Chand</span>
+            <div class="prediction-section">
+                {% if result %}
+                <span class="text">{{result}}</span>
+
+                <div class="activity">
+                    <div class="title">
+                        <i class="uil uil-clock-three"></i>
+                        <span class="text">Explainable AI</span>
                     </div>
-                    <div class="data email">
-                        <span class="data-title">Email</span>
-                        <span class="data-list">premshahi@gmail.com</span>
-                        <span class="data-list">deepachand@gmail.com</span>
-                        <span class="data-list">prakashhai@gmail.com</span>
-                        <span class="data-list">manishachand@gmail.com</span>
-                        <span class="data-list">pratimashhai@gmail.com</span>
-                        <span class="data-list">manshahi@gmail.com</span>
-                        <span class="data-list">ganeshchand@gmail.com</span>
+                
+                    <div class="activity-data">
+                        <form action="/radio" method="post">
+                            <p>Select one of the following options:</p>
+                            <input type="radio" id="option1" name="options" value="Lime">
+                            <label for="Lime">Lime</label>
+                    
+                            <input type="radio" id="option2" name="options" value="Shap">
+                            <label for="Shap">Shap</label>
+                    
+                            <input type="radio" id="#Lime" name="options" value="Saliancy Feature">
+                            <label for="Saliancy Feature">Saliancy Feature</label>
+                            <input type="submit" value="Show">
+                        </form>
                     </div>
-                    <div class="data joined">
-                        <span class="data-title">Joined</span>
-                        <span class="data-list">2022-02-12</span>
-                        <span class="data-list">2022-02-12</span>
-                        <span class="data-list">2022-02-13</span>
-                        <span class="data-list">2022-02-13</span>
-                        <span class="data-list">2022-02-14</span>
-                        <span class="data-list">2022-02-14</span>
-                        <span class="data-list">2022-02-15</span>
-                    </div>
-                    <div class="data type">
-                        <span class="data-title">Type</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                    </div>
-                    <div class="data status">
-                        <span class="data-title">Status</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                    </div>
-                </div>
+                    {% if option %}
+                    <span class="text">{{option}}</span>
+                    {% endif %}
+                {% else %}
+                    <p>Model and row for prediction not selected</p>
+                    <div class="activity">
+                        <div class="title">
+                            <i class="uil uil-clock-three"></i>
+                            <span class="text">Explainable AI</span>
+                        </div>
+                        <span class="text">No Model or Prediction to Explain</span>
+                {% endif %}
             </div>
         </div>
     </section>

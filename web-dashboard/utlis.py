@@ -2,9 +2,22 @@
 import pandas as pd
 import numpy as np
 import plotly.express as px
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.model_selection import cross_val_score, KFold, train_test_split
 
+# # Import the required libraries
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+import xgboost as xgb
 
 import plotly.graph_objects as go
+
+import joblib
 
 
 
@@ -116,3 +129,25 @@ class GrpahBuilder:
                 }
         fig = px.scatter(data1, x='x', y='y', title='Scatter Plot')
         return fig
+
+
+
+def modelselect(model):
+    logreg = joblib.load('model/logistic_regression_model.pkl')
+    dt = joblib.load('model/decision_tree_model.pkl')
+    rf = joblib.load('model/random_forest_model.pkl')
+    nb = joblib.load('model/naive_bayes_model.pkl')
+    knn = joblib.load('model/knn_model.pkl')
+    xg = joblib.load('model/xgboost_model.pkl')
+    sc = joblib.load('model/standard_scalar.pkl')
+
+    model_dict = {
+    'Logistic Regression': logreg,
+    'Decision Tree': dt,
+    'Random Forest': rf,
+    'Naive Bayes': nb,
+    'K-Nearest Neighbors': knn,
+    'XGBoost': xg,
+    'Standard scalar': sc
+    }
+    return model_dict[model]
