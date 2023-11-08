@@ -502,3 +502,39 @@ th, td {
     text-align: left;
     padding: 8px;
 }
+
+/* static/style.css */
+/* Add your CSS styles here */
+
+.tabs {
+    display: flex;
+}
+
+.tablinks {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #f2f2f2;
+    width: 20%;
+}
+
+.tabcontent {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 90%;
+}
+
+.tabcontent h2 {
+    color: #333;
+}
+
+/* Style for the active tab */
+.tablinks.active {
+    background-color: #ddd;
+}
+
+/* Style for the active content */
+.tabcontent.active {
+    display: block;
+}

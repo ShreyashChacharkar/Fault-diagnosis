@@ -84,7 +84,58 @@ radioButtons.forEach(radioButton => {
             }
         });
     });
-})
+});
+
+    // JavaScript code for tab switching
+// static/script.js
+/* Add your JavaScript code here */
+
+// Function to open a specific tab
+function openTab(event, tabName) {
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class "tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class "tablinks" and remove the "active" class
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    // Show the specific tab and add the "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.classList.add("active");
+}
+
+// Add an event listener to the first tab to open it by default
+document.querySelector(".tablinks").click();
+
+    
+// $(document).ready(function() {
+//     // Extract the tab hash from the URL
+//     var tabHash = window.location.hash;
+
+//     // Set the initial active tab based on the tab hash
+//     if (tabHash) {
+//         $('a[href="' + tabHash + '"]').click();
+//     }
+
+//     // Add smooth scrolling for anchor links
+//     $('a[href^="#"]').on('click', function(event) {
+//         event.preventDefault();
+//         let target = $(this).attr('href');
+//         $('html, body').animate({
+//             scrollTop: $(target).offset().top
+//         }, 800);
+//     });
+
+//     // Rest of your existing JavaScript code
+// });
+
 
 
 

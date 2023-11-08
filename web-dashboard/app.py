@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, jsonify,url_for
-from utlis import GrpahBuilder, modelselect
+from utlis import GrpahBuilder, modelselect, lime_local_explain
 import pandas as pd
 import numpy as np
 import plotly.express as px
 #import important liberies
+import lime
+import lime.lime_tabular
 
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import confusion_matrix, accuracy_score
@@ -42,18 +44,13 @@ def make_prediction():
     else:
         model = modelselect(smodel)
         sc = modelselect('Standard scalar')
+        le = modelselect('Label encoder')
         ls = ast.literal_eval(input_data[0])
         sc_data = sc.transform([ls[1:]])
         prediction = model.predict(sc_data)[0]
-    return render_template('index.html',data="data", dataframe=df, result=prediction)
+        lime_local = lime_local_explain(df.iloc[:,1:], sc_data, model)
+    return render_template('index.html', dataframe=df, result=prediction,data=lime_local)
     
-@app.route('/radio', methods=['POST'])
-def radio_form():
-    selected_option = request.form.get('options')
-
-    predict_url = url_for('make_prediction')
-    return render_template('index.html', data="data", dataframe=df, option=selected_option, predict_url=predict_url)
-
 @app.route('/failureprediction')
 def failureprediction():
     fig = gb.scatter_graph()

@@ -19,6 +19,9 @@ import plotly.graph_objects as go
 
 import joblib
 
+import lime
+import lime.lime_tabular
+
 
 
 
@@ -140,6 +143,7 @@ def modelselect(model):
     knn = joblib.load('model/knn_model.pkl')
     xg = joblib.load('model/xgboost_model.pkl')
     sc = joblib.load('model/standard_scalar.pkl')
+    le = joblib.load('model/label_encoder.pkl')
 
     model_dict = {
     'Logistic Regression': logreg,
@@ -148,6 +152,15 @@ def modelselect(model):
     'Naive Bayes': nb,
     'K-Nearest Neighbors': knn,
     'XGBoost': xg,
-    'Standard scalar': sc
+    'Standard scalar': sc,
+    'Label encoder': le
     }
     return model_dict[model]
+
+def lime_local_explain(df, sc_data, model):
+    x_train = joblib.load("explainable_ai/train_data.pkl")
+    y_train = joblib.load("explainable_ai/train_label.pkl")
+    lime_explainer = lime.lime_tabular.LimeTabularExplainer(x_train, feature_names=df.columns, training_labels=y_train, discretize_continuous=True)
+    exp = lime_explainer.explain_instance(sc_data[0], model.predict_proba, num_features=10, top_labels=1)
+    note = exp.as_html(show_table=True, show_all=False)
+    return note
