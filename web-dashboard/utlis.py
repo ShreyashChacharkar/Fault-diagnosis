@@ -19,6 +19,9 @@ import plotly.graph_objects as go
 
 import joblib
 
+import shap
+shap.initjs()
+
 import lime
 import lime.lime_tabular
 
@@ -164,3 +167,7 @@ def lime_local_explain(df, sc_data, model):
     exp = lime_explainer.explain_instance(sc_data[0], model.predict_proba, num_features=10, top_labels=1)
     note = exp.as_html(show_table=True, show_all=False)
     return note
+
+def shap_local_explainer():
+    
+    pass

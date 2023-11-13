@@ -7,6 +7,9 @@ import plotly.express as px
 import lime
 import lime.lime_tabular
 
+import shap
+shap.initjs()
+
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.metrics import confusion_matrix, accuracy_score
 from sklearn.model_selection import cross_val_score, KFold, train_test_split
@@ -20,6 +23,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 import xgboost as xgb
 import ast
+
 
 
 app = Flask(__name__)
@@ -50,17 +54,19 @@ def make_prediction():
         prediction = model.predict(sc_data)[0]
         lime_local = lime_local_explain(df.iloc[:,1:], sc_data, model)
     return render_template('index.html', dataframe=df, result=prediction,data=lime_local)
+
+
     
-@app.route('/failureprediction')
+@app.route('/failuredetection')
 def failureprediction():
     fig = gb.scatter_graph()
     return render_template('index.html', dataframe=None)
 
-@app.route('/notification')
+@app.route('/faliurediagnosis')
 def notification():
     return render_template('index.html', content='notification')
 
-@app.route('/#comment')
+@app.route('/comment')
 def comments():
     return render_template('index.html', content='comment')
 
