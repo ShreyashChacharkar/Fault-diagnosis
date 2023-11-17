@@ -114,6 +114,7 @@ function openTab(event, tabName) {
 // Add an event listener to the first tab to open it by default
 document.querySelector(".tablinks").click();
 
+
     
 // $(document).ready(function() {
 //     // Extract the tab hash from the URL
@@ -135,6 +136,13 @@ document.querySelector(".tablinks").click();
 
 //     // Rest of your existing JavaScript code
 // });
+
+        // Retrieve SHAP plot data from Flask
+const plotData = { plot_data };
+
+// Render SHAP plot using D3.js
+d3.select("#shap-plot")
+    .call(shap.forcePlot(plotData));
 
 
 

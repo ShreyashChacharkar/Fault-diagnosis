@@ -41,53 +41,65 @@
     <input type="submit" value="Predict">
 </form>
 <div class="prediction-section">
-{% if result %}
-<span class="text">{{result}}</span>
+    {% if result %}
+    <span class="text">{{result}}</span>
 
-<div class="activity">
-    <div class="title">
-        <i class="uil uil-clock-three"></i>
-        <span class="text">Explainable AI</span>
-    </div>
-</div>
-<h2>Local Explainer</h2>
-<div class="tabs">
-    <button class="tablinks" onclick="openTab(event, 'tab3')">Shap</button>
-    <button class="tablinks" onclick="openTab(event, 'tab4')">Lime</button>
-</div>
-
-<div id="tab3" class="tabcontent">
-    <h2>Tab 1 Content</h2>
-    <p>This is the content for Tab 1.</p>
-</div>
-
-<div id="tab4" class="tabcontent">
-        {{ data|safe }}
-</div> <br><br>
-
-
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-{% else %}
-    <p>Model and row for prediction not selected</p>
     <div class="activity">
         <div class="title">
             <i class="uil uil-clock-three"></i>
             <span class="text">Explainable AI</span>
         </div>
-        <h2>Local Explainer</h2>
-        <p>Select Model and row for prediction</p><br><br>
-{% endif %}
-</div>
+    </div>
+    <h2>Local Explainer</h2>
+    <div class="tabs">
+        <button class="tablinks" onclick="openTab(event, 'tab3')">Shap</button>
+        <button class="tablinks" onclick="openTab(event, 'tab4')">Lime</button>
+    </div>
 
-<h2>Global Explainer</h2>
-<div class="tabs">
-    <button class="tablinks" onclick="openTab(event, 'tab1')">Shap</button>
-</div>
+    <div id="tab3" class="tabcontent">
+        {% for i in shap_local.keys() %}
+            {{i}}
+            {{shap_local[i]|safe}}
+        {% endfor %}
+    </div>
 
-<div id="tab1" class="tabcontent">
-    <h2>Tab 1 Content</h2>
-    <p>This is the content for Tab 1.</p>
-</div>
+    <div id="tab4" class="tabcontent">
+            {{ data|safe }}
+    </div> <br><br>
 
+    <h2>Global Explainer</h2>
+        <div class="tabs">
+            <button class="tablinks" onclick="openTab(event, 'tab1')">Shap</button>
+        </div>
+
+        <div id="tab1" class="tabcontent">
+            <img src="{{shap_global}}" alt="Description of the image">
+        </div>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    {% else %}
+        <p>Model and row for prediction not selected</p>
+        <div class="activity">
+            <div class="title">
+                <i class="uil uil-clock-three"></i>
+                <span class="text">Explainable AI</span>
+            </div>
+            <h2>Local Explainer</h2>
+            <p>Select Model and row for prediction</p><br><br>
+        </div>
+        <h2>Global Explainer</h2>
+        <form action="#">
+            <div class="tabs">
+                <button class="tablinks" onclick="openTab(event, 'tab1')">Shap</button>
+            </div>
+
+            <div id="tab1" class="tabcontent">
+                <h2>Tab 1 Content</h2>
+            </div>
+        </form>
+    </div>
+    {% endif %}
+    
 {% endblock content %}

@@ -25,7 +25,7 @@ shap.initjs()
 import lime
 import lime.lime_tabular
 
-
+import matplotlib.pyplot as plt
 
 
 class GrpahBuilder:
@@ -168,6 +168,47 @@ def lime_local_explain(df, sc_data, model):
     note = exp.as_html(show_table=True, show_all=False)
     return note
 
-def shap_local_explainer():
-    
-    pass
+import shap
+import joblib
+
+class ShapExplain:
+    def __init__(self, model, df, sc_data):
+        self.model = model
+        self.df = df
+        self.sc_data = sc_data
+        self.exp = None
+
+    def shap_explainer(self):
+        try:
+            if hasattr(self.model, 'feature_importances_') and len(self.model.feature_importances_) != 0:
+                exp = shap.TreeExplainer(self.model)
+            else:
+                exp = shap.KernelExplainer(self.model.predict, self.df)
+            self.exp = exp
+        except Exception as e:
+            print(f"Error in shap_explainer: {e}")
+
+    def shap_local_explainer(self):
+        if self.exp is None:
+            self.shap_explainer()
+
+        shap_values = self.exp.shap_values(self.sc_data)
+        shap_html = {}
+        for fault_cls in range(0, 18):
+            shap_plot = shap.force_plot(self.exp.expected_value[fault_cls], shap_values[fault_cls][0], self.sc_data[0],
+                                        feature_names=self.df.columns[1:])
+            shap_html[fault_cls] = f"{shap.getjs()}{shap_plot.html()}"
+        return shap_html
+
+    def shap_global_explainer(self,save_path):
+        if self.exp is None:
+            self.shap_explainer()
+
+        x_test = joblib.load("explainable_ai/x_test.pkl")
+        shap_values = self.exp.shap_values(x_test)
+        shap_glob = shap.summary_plot(shap_values, feature_names=self.df.columns[1:], max_display=15)
+        plt.savefig(save_path)
+
+        # Close the Matplotlib figure to free up resources
+        plt.close()
+        return save_path

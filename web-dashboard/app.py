@@ -1,12 +1,11 @@
 from flask import Flask, render_template, request, jsonify,url_for
-from utlis import GrpahBuilder, modelselect, lime_local_explain
+from utlis import GrpahBuilder, modelselect, lime_local_explain, ShapExplain
 import pandas as pd
 import numpy as np
 import plotly.express as px
 #import important liberies
 import lime
 import lime.lime_tabular
-
 import shap
 shap.initjs()
 
@@ -27,7 +26,8 @@ import ast
 
 
 app = Flask(__name__)
-
+import matplotlib
+matplotlib.use('Agg')
 
 df = pd.read_csv("dataset\dashboard.csv")
 gb = GrpahBuilder()
@@ -50,10 +50,14 @@ def make_prediction():
         sc = modelselect('Standard scalar')
         le = modelselect('Label encoder')
         ls = ast.literal_eval(input_data[0])
-        sc_data = sc.transform([ls[1:]])
+        df1 = pd.DataFrame(data=np.expand_dims(np.array(ls[1:]),axis=0), columns=df.columns[1:])
+        sc_data = sc.transform(df1)
         prediction = model.predict(sc_data)[0]
         lime_local = lime_local_explain(df.iloc[:,1:], sc_data, model)
-    return render_template('index.html', dataframe=df, result=prediction,data=lime_local)
+        sh = ShapExplain(model,df,sc_data)
+        shap_local = sh.shap_local_explainer()
+        shap_global = sh.shap_global_explainer(save_path="web-dashboard/static/shap_global_summary1_plot.png")
+    return render_template('index.html', dataframe=df, result=prediction,data=lime_local, shap_local=shap_local,shap_global=shap_global[14:])
 
 
     
