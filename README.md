@@ -17,8 +17,7 @@
 
 ## Introduction
 
-Fault diagnosis is process diagnosis of fault in machine after failure occured. To analyse type of falut we use fault diagnosis.
-Here we used Tennese Eastmann dataset, the Tennessee Eastman Process is a well-known benchmark process used in to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
+Fault diagnosis is process diagnosis of fault in machine after failure occurred. To analyze type of fault we use fault diagnosis. Here we used Tennessee Eastman dataset, the Tennessee Eastman Process is a well-known benchmark process used in to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
  
 
 ## Features
@@ -150,6 +149,7 @@ Explain how the project's performance is evaluated. Include metrics or criteria 
 ## Timeline
 
 | Days                 | Tasks    | Description|
+|-----------------------------------------|----------|----------|
 |Day 1 | Topic introdcution  |read reserch paper, youtube, article|
 |Day 1 to 2 | Data wrangling | Data Preprocessing(pyredr lib.), Cleaing, ETL activities, Data analysis, Data visualistion(matplotlib, seaborn)|
 |Day 3 |Model Trainaing | Training with data(sklearn, tensorflow, classification algorithm), Feature extracting, Hyperparammeter Tuning|
