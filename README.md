@@ -146,7 +146,7 @@ df_train.to_csv("dataset/faulty_training.csv")
 
 eg.
 
-![Shaply global values](image\shap_global_summary_plot.png)
+![Shaply global values](image/shap_global_summary1_plot.png)
 
 
 ## Timeline
