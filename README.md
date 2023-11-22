@@ -1,6 +1,4 @@
-# Project Title
-
-Fault diagnosis.
+# Fault diagnosis.
 
 ## Table of Contents
 
@@ -15,11 +13,13 @@ Fault diagnosis.
 9. [Evaluation](#evaluation)
 10. [Timeline](#timeline)
 11. [License](#license)
-12. [Acknowledgments](#acknowledgments)
+12. [Credits](#credits)
 
 ## Introduction
 
-Provide a more detailed introduction to the project. Explain its purpose, goals, and any relevant background information.
+Fault diagnosis is process diagnosis of fault in machine after failure occured. To analyse type of falut we use fault diagnosis.
+Here we used Tennese Eastmann dataset, the Tennessee Eastman Process is a well-known benchmark process used in to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
+ 
 
 ## Features
 
@@ -50,16 +50,21 @@ pip install -r requirements.txt
 
 ## Usage
 
-Explain how to use the project. Include examples of command-line commands or code snippets.
+For data analysis and model training refer 
+* [Tree based model](tep-fault-diagnosis-tree-classification.ipynb)
+* [Neural Network](tep-fault-diagnosis-usingNeural_network.ipynb)
 
-```bash
-# Example usage
-python main.py --input data/input.csv --output results/output.csv
+
+For running web based app
 ```
+python web-dashboard/app.py
+
+```
+
 
 ## Project Structure
 
-Explain the organization of the project's directories and files. Highlight the purpose of important files or folders.
+ Project's directories and files. Highlight the purpose of important files or folders.
 
 ```
 project-root/
@@ -136,6 +141,7 @@ df_train.to_csv("dataset/faulty_training.csv")
 | KNN                               |  0.464   |
 | Decision Tree                                  |  0.827   |
 | Logistic Regression                                  |  0.695   |
+| Neural Networks                   |  0.946  |
 
 ## Evaluation
 
@@ -143,11 +149,20 @@ Explain how the project's performance is evaluated. Include metrics or criteria 
 
 ## Timeline
 
+| Days                 | Tasks    | Description|
+|Day 1 | Topic introdcution  |read reserch paper, youtube, article|
+|Day 1 to 2 | Data wrangling | Data Preprocessing(pyredr lib.), Cleaing, ETL activities, Data analysis, Data visualistion(matplotlib, seaborn)|
+|Day 3 |Model Trainaing | Training with data(sklearn, tensorflow, classification algorithm), Feature extracting, Hyperparammeter Tuning|
+|Day 4 | Communication Result | Explainable AI Shaply and Lime, Real time fault analysis|
+|Day 5 to 8 | Web dashboard | Web dashboard(basline with templates, style, app.py, utlis.py) |
+|Day 9 | Deplying on cloud | Deploying selected ML model on GCP and AWS, connect apis|
+
 ## License
 
-Specify the project's license to clarify how others can use and contribute to it.
+This github repository can be used for educational purpose only
 
-## Acknowledgments
-
-This Dataset was sponsored by the Office of Naval Research, Human & Bioengineered Systems (ONR 341), program officer Dr. Jeffrey G. Morrison under contract N00014-15-C-5003. The views expressed are those of the authors and do not reflect the official policy or position of the Office of Naval Research, Department of Defense, or US Government.
-
+## credits
+* [principal-component-analysis-for-dimensionality-reduction](https://towardsdatascience.com/principal-component-analysis-for-dimensionality-reduction-115a3d157bad)
+* [TEP dataset- explanation by KeepFloyding](https://keepfloyding.github.io/posts/data-explor-TEP-3/)
+* [Github:Balyogi](https://github.com/mohan696matlab)
+* []
