@@ -9,8 +9,8 @@
 5. [Usage](#usage)
 6. [Project Structure](#project-structure)
 7. [Data](#data)
-8. [Models](#models)
-9. [Evaluation](#evaluation)
+8. [Evaluation](#evaluation)
+9. [Explainable AI](#explainable-ai)
 10. [Timeline](#timeline)
 11. [License](#license)
 12. [Credits](#credits)
@@ -18,11 +18,6 @@
 ## Introduction
 
 Fault diagnosis is process diagnosis of fault in machine after failure occurred. To analyze type of fault we use fault diagnosis. Here we used Tennessee Eastman dataset, the Tennessee Eastman Process is a well-known benchmark process used in to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
- 
-
-## Features
-
-List the key features or functionalities of the project.
 
 ## Requirements
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -130,7 +125,7 @@ df_ff.to_csv("dataset/fault_free_training.csv")
 df_train.to_csv("dataset/faulty_training.csv")
 ```
 
-## Models
+## Evaluation
 
 | Method                                    |Accuracy  |
 |-----------------------------------------  |----------|
@@ -142,9 +137,17 @@ df_train.to_csv("dataset/faulty_training.csv")
 | Logistic Regression                                  |  0.695   |
 | Neural Networks                   |  0.946  |
 
-## Evaluation
+## Explainable AI
+* Lime
+* Permutation importance
+* Partial dependence
+* Shap (local)
+* Shap (global)
 
-Explain how the project's performance is evaluated. Include metrics or criteria used to measure success.
+eg.
+
+![Shaply global values](image\shap_global_summary_plot.png)
+
 
 ## Timeline
 
@@ -165,4 +168,3 @@ This github repository can be used for educational purpose only
 * [principal-component-analysis-for-dimensionality-reduction](https://towardsdatascience.com/principal-component-analysis-for-dimensionality-reduction-115a3d157bad)
 * [TEP dataset- explanation by KeepFloyding](https://keepfloyding.github.io/posts/data-explor-TEP-3/)
 * [Github:Balyogi](https://github.com/mohan696matlab)
-* []
