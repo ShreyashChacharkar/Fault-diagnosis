@@ -44,6 +44,15 @@ $(document).ready(function() {
 
 
 function predictFunction(button) {
+    // Remove 'clicked' class from all buttons
+    var allButtons = document.querySelectorAll('.predict-button');
+    allButtons.forEach(function (btn) {
+        btn.classList.remove('clicked');
+    });
+
+    // Add 'clicked' class to the clicked button
+    button.classList.add('clicked');
+
     var row = button.closest('tr');
     var cells = row.querySelectorAll('td');
     var rowData = [];
@@ -69,22 +78,9 @@ function predictFunction(button) {
         }
     });
 }
+
 // Include jQuery library for AJAX
 
-const radioButtons = document.querySelectorAll('input[type="radio"]');
-        
-radioButtons.forEach(radioButton => {
-    radioButton.addEventListener('change', function() {
-        const selectedOption = this.value;
-        fetch('/update_option', {
-            method: 'POST',
-            body: JSON.stringify({ selectedOption }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-    });
-});
 
     // JavaScript code for tab switching
 // static/script.js

@@ -572,3 +572,35 @@ th, td {
 .tabcontent_glob.active {
     display: block;
 }
+
+.predict-button {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+}
+
+/* Hover effect */
+.predict-button:hover {
+    background-color: #b56936; /* Darker green on hover */
+}
+
+.predict-button.clicked {
+    background-color: #a05d45; /* Darker green on click */
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 15px; /* Padding for better appearance */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Cursor style */
+    font-size: 16px; /* Font size */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green background color on hover */
+}

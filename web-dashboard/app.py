@@ -33,7 +33,7 @@ df = pd.read_csv("dataset\dashboard.csv")
 gb = GrpahBuilder()
 
 @app.route('/')
-@app.route('/rulprediction')
+@app.route('/faultdiagnosis')
 def rulprediction():
     return render_template('index.html',data="data", dataframe=df)
 

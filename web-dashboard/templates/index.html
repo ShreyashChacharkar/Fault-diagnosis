@@ -27,7 +27,7 @@
                     {% for value in row[1:] %}       
                         <td>
                             {% if value == 'predict' %}
-                            <button class="predict-button" type="button" onclick="predictFunction(this)">Predict</button>
+                            <button class="predict-button" type="button" onclick="predictFunction(this)">Select</button>
                             {% else %}
                                 {{ value }}
                             {% endif %}
@@ -37,12 +37,12 @@
             {% endfor %}
         </tbody>
         </table>
-    </div>
+    </div><br>
     <input type="submit" value="Predict">
-</form>
+</form><br>
 <div class="prediction-section">
     {% if result %}
-    <span class="text">{{result}}</span>
+    <p>Prediction for selected data is Fault class <span class="text">{{ result }}</span></p>
 
     <div class="activity">
         <div class="title">
@@ -57,10 +57,13 @@
     </div>
 
     <div id="tab3" class="tabcontent">
+        <p>Shap value of Fault class <span class="text">{{ result }}</span> is maximum. Hence it is our prediction</p><br>
+
         {% for i in shap_local.keys() %}
-            {{i}}
+        <p>Shap Force Plot of Fault class  <span class="text">{{i}}</span> for the prediction</p>
             {{shap_local[i]|safe}}
         {% endfor %}
+        
     </div>
 
     <div id="tab4" class="tabcontent">
