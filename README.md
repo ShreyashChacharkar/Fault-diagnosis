@@ -17,7 +17,8 @@
 
 ## Introduction
 
-Fault diagnosis is the process of diagnosis of fault in the machine after a failure occurs. To analyze the type of fault we use fault diagnosis. Here we used the Tennessee Eastman dataset. The Tennessee Eastman Process is a well-known benchmark process used to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
+Fault diagnosis is the process of diagnosis of fault in the machine after a failure occurs. To analyze the type of fault we use fault diagnosis. Here we used the Tennessee Eastman dataset. The Tennessee Eastman Process is a well-known benchmark process used to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards. 
+
 In this project, I trained ML models as mentioned below as well as a neural network model trained on Kggle GPU for the classification of the fault class type which has 52 features. I created a web dashboard which gives a glimpse of how prediction works If you are interested, you can try out. This predition also explains you which features are important for a particular feature with respect to model via explainable ai tools like Shap, Lime
 
 For data analysis and model training refer 
