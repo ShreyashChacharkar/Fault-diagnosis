@@ -17,7 +17,12 @@
 
 ## Introduction
 
-Fault diagnosis is process diagnosis of fault in machine after failure occurred. To analyze type of fault we use fault diagnosis. Here we used Tennessee Eastman dataset, the Tennessee Eastman Process is a well-known benchmark process used in to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
+Fault diagnosis is the process of diagnosis of fault in the machine after a failure occurs. To analyze the type of fault we use fault diagnosis. Here we used the Tennessee Eastman dataset. The Tennessee Eastman Process is a well-known benchmark process used to evaluate process control and fault detection methods. The goal of fault detection is to identify when the process is operating abnormally, which can lead to product quality issues, equipment damage, and safety hazards.
+In this project, I trained ML models as mentioned below as well as a neural network model trained on Kggle GPU for the classification of the fault class type which has 52 features. I created a web dashboard which gives a glimpse of how prediction works If you are interested, you can try out. This predition also explains you which features are important for a particular feature with respect to model via explainable ai tools like Shap, Lime
+
+For data analysis and model training refer 
+* [Tree based model](tep-fault-diagnosis-tree-classification.ipynb)
+* [Neural Network model](tep-fault-diagnosis-usingNeural_network.ipynb)
 
 ## Requirements
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
@@ -33,12 +38,9 @@ Fault diagnosis is process diagnosis of fault in machine after failure occurred.
 
 ## Installation
 
-Provide step-by-step instructions on how to install the project and its dependencies. This may include setting up a virtual environment, installing libraries, or configuring specific settings.
-
 ```bash
 # Example installation steps
-git clone https://github.com/yourusername/yourproject.git
-cd yourproject
+git clone [https://github.com/ShreyashChacharkar/Fault-diagnosis](https://github.com/ShreyashChacharkar/Fault-diagnosis)
 pip install -r requirements.txt
 ```
 
@@ -46,7 +48,7 @@ pip install -r requirements.txt
 
 For data analysis and model training refer 
 * [Tree based model](tep-fault-diagnosis-tree-classification.ipynb)
-* [Neural Network](tep-fault-diagnosis-usingNeural_network.ipynb)
+* [Neural Network model](tep-fault-diagnosis-usingNeural_network.ipynb)
 
 
 For running web based app
@@ -153,16 +155,16 @@ eg.
 
 | Days                 | Tasks    | Description|
 |-----------------------------------------|----------|----------|
-|Day 1 | Topic introdcution  |read reserch paper, youtube, article|
-|Day 1 to 2 | Data wrangling | Data Preprocessing(pyredr lib.), Cleaing, ETL activities, Data analysis, Data visualistion(matplotlib, seaborn)|
-|Day 3 |Model Trainaing | Training with data(sklearn, tensorflow, classification algorithm), Feature extracting, Hyperparammeter Tuning|
-|Day 4 | Communication Result | Explainable AI Shaply and Lime, Real time fault analysis|
-|Day 5 to 8 | Web dashboard | Web dashboard(basline with templates, style, app.py, utlis.py) |
-|Day 9 | Deplying on cloud | Deploying selected ML model on GCP and AWS, connect apis|
+|Day 1 | Topic introduction  |read research paper, youtube, article|
+|Day 1 to 2 | Data wrangling | Data preprocessing (pyredr lib.), Cleaning, ETL activities, Data analysis, Data visualisation(matplotlib, seaborn)|
+|Day 3 |Model Training | Training with data(sklearn, TensorFlow, classification algorithm), Feature extracting, Hyperparameter Tuning|
+|Day 4 | Communication Result | Explainable AI Shaply and Lime, Real-time fault analysis|
+|Day 5 to 8 | Web dashboard | Web dashboard (baseline with templates, style, app.py, utlis.py) |
+|Day 9 | Deploying on cloud | Deploying selected ML model on GCP and AWS connect apis|
 
 ## License
 
-This github repository can be used for educational purpose only
+This GitHub repository can be used for educational purposes only
 
 ## credits
 * [principal-component-analysis-for-dimensionality-reduction](https://towardsdatascience.com/principal-component-analysis-for-dimensionality-reduction-115a3d157bad)
