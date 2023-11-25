@@ -1,5 +1,8 @@
 # Fault diagnosis.
 
+![Untitled design](https://github.com/ShreyashChacharkar/Fault-diagnosis/assets/78749032/49561e31-b6e1-47f4-ad5e-d85da5cc7dd5)
+
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
