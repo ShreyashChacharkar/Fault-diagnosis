@@ -170,7 +170,4 @@ eg.
 
 This GitHub repository can be used for educational purposes only
 
-## credits
-* [principal-component-analysis-for-dimensionality-reduction](https://towardsdatascience.com/principal-component-analysis-for-dimensionality-reduction-115a3d157bad)
-* [TEP dataset- explanation by KeepFloyding](https://keepfloyding.github.io/posts/data-explor-TEP-3/)
-* [Github:Balyogi](https://github.com/mohan696matlab)
+
